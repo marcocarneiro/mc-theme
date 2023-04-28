@@ -1,3 +1,12 @@
+<?php  
+  header_remove('Server');
+  header_remove('X-Powered-By');
+  header_remove('X-AspNetVersion');
+  header_remove('X-AspNetMvcVersion');
+
+  header('X-Frame-Options: SAMEORIGIN');
+?>
+
 <?php
 /**
  * The template for displaying the header
@@ -15,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self';" />
 	<?php $viewport_content = apply_filters( 'hello_elementor_viewport_content', 'width=device-width, initial-scale=1' ); ?>
 	<meta name="viewport" content="<?php echo esc_attr( $viewport_content ); ?>">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
